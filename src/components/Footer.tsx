@@ -22,9 +22,7 @@ export default function Footer() {
           </motion.button>
 
           <p className="text-slate-500 text-sm flex items-center gap-1.5">
-            © {new Date().getFullYear()} Ibrahim Al Ayoubi — Built with{" "}
-            <Heart size={12} className="text-blue-500 fill-blue-500" />{" "}
-            using Next.js & Tailwind
+            © {new Date().getFullYear()} Ibrahim Al Ayoubi — Built using Next.js & Tailwind
           </p>
 
           <div className="flex items-center gap-3">
