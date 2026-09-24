@@ -41,6 +41,7 @@ export default function Projects() {
             return (
               <motion.div
                 key={project.id}
+                id={`project-${project.id}`}
                 initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i + 1} variants={fadeUp}
                 whileHover={{ y: -8, scale: 1.01 }}
                 className="group relative flex flex-col"

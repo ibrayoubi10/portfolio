@@ -169,7 +169,7 @@ export default function Hero() {
             >
               <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
               <span className="text-sm text-blue-300 font-medium">
-                Open to CIFRE thesis opportunities
+                Open to AI engineering opportunities
               </span>
             </motion.div>
 
@@ -193,7 +193,7 @@ export default function Hero() {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="text-xl md:text-2xl text-slate-400 mb-2 font-mono"
             >
-              Data Scientist
+              {personalInfo.title}
             </motion.p>
 
             {/* Typing subtitle */}
@@ -256,7 +256,7 @@ export default function Hero() {
                 { href: personalInfo.github, icon: Github, label: "GitHub" },
                 { href: personalInfo.linkedin, icon: Linkedin, label: "LinkedIn" },
                 { href: `mailto:${personalInfo.email}`, icon: Mail, label: "Email" },
-                { href: `tel:${personalInfo.phone}`, icon: Phone, label: "Phone" },
+                { href: `tel:${personalInfo.phoneHref}`, icon: Phone, label: "Phone" },
               ].map(({ href, icon: Icon, label }) => (
                 <motion.a
                   key={label}
@@ -265,6 +265,7 @@ export default function Hero() {
                   rel="noreferrer"
                   whileHover={{ scale: 1.15, y: -3 }}
                   title={label}
+                  aria-label={label}
                   className="w-11 h-11 rounded-xl border border-slate-700 bg-slate-800/50 flex items-center justify-center text-slate-400 hover:text-blue-300 hover:border-blue-500/50 hover:bg-blue-500/10 transition-all duration-300"
                 >
                   <Icon size={18} />
@@ -321,7 +322,7 @@ export default function Hero() {
               className="absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 px-4 py-2 rounded-full bg-[#080820]/90 border border-blue-500/30 backdrop-blur-md shadow-lg whitespace-nowrap"
             >
               <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-              <span className="text-xs text-blue-200 font-medium">ML Engineer · Paris</span>
+              <span className="text-xs text-blue-200 font-medium">AI Engineer · Montpellier</span>
             </motion.div>
           </motion.div>
 

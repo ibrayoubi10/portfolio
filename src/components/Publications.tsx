@@ -35,7 +35,7 @@ export default function Publications() {
           </motion.h3>
           {publications.map((pub, i) => (
             <motion.div key={pub.id} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i + 2} variants={fadeUp}
-              whileHover={{ y: -4 }} className="group relative">
+              whileHover={{ y: -4 }} className="group relative mb-6 last:mb-0">
               <div className="absolute -inset-0.5 rounded-2xl bg-gradient-to-br from-blue-600/0 to-cyan-600/0 group-hover:from-blue-600/15 group-hover:to-cyan-600/15 blur-sm transition-all duration-500" />
               <div className="relative bg-[#080820]/80 border border-blue-500/20 rounded-2xl p-7 backdrop-blur-sm hover:border-blue-500/40 transition-all">
                 <div className="flex flex-wrap gap-2 mb-4">
@@ -43,16 +43,53 @@ export default function Publications() {
                     <Award size={11} />{pub.venue}
                   </span>
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border bg-amber-500/10 text-amber-300 border-amber-500/30">
-                    <Clock size={11} />{pub.status} — {pub.year}
+                    <Clock size={11} />{pub.status} — {pub.submittedDate ?? pub.year}
                   </span>
                 </div>
                 <h4 className="text-xl font-bold text-white mb-3 leading-snug">{pub.title}</h4>
+                {pub.authors && (
+                  <p className="text-sm leading-relaxed text-slate-300 mb-4">
+                    {pub.authors.map((author, authorIndex) => (
+                      <span key={author.name}>
+                        {authorIndex > 0 && ", "}
+                        <span className={author.name === "I. Al Ayoubi" ? "font-semibold text-cyan-300" : undefined}>{author.name}</span>
+                        <sup className="ml-0.5 text-xs text-blue-300">{author.affiliations.join(",")}{author.marker ? `,${author.marker}` : ""}</sup>
+                      </span>
+                    ))}
+                  </p>
+                )}
                 <p className="text-slate-400 text-sm leading-relaxed mb-5">{pub.description}</p>
+                {pub.highlights && (
+                  <ul className="grid sm:grid-cols-3 gap-4 mb-5">
+                    {pub.highlights.map((highlight) => (
+                      <li key={highlight.title} className="rounded-lg bg-blue-500/5 border border-blue-500/15 p-4">
+                        <p className="text-sm font-medium text-blue-200 mb-2"><span aria-hidden="true" className="mr-2">{highlight.icon}</span>{highlight.title}</p>
+                        <p className="text-sm leading-relaxed text-slate-400">{highlight.description}</p>
+                      </li>
+                    ))}
+                  </ul>
+                )}
                 <div className="flex flex-wrap gap-2">
                   {pub.topics.map((topic) => (
                     <span key={topic} className="text-xs px-2.5 py-1 rounded-md border font-medium bg-blue-500/10 text-blue-300 border-blue-500/20">{topic}</span>
                   ))}
                 </div>
+                {pub.abstract && (
+                  <details className="mt-5 border-t border-blue-500/20 pt-4">
+                    <summary className="cursor-pointer text-sm font-medium text-blue-300 hover:text-cyan-300">Read abstract & affiliations</summary>
+                    <div className="mt-4 space-y-4">
+                      {pub.abstract.map((paragraph) => <p key={paragraph} className="text-base leading-relaxed text-slate-300">{paragraph}</p>)}
+                    </div>
+                    {pub.affiliations && (
+                      <div className="mt-6">
+                        <h5 className="text-sm font-semibold text-white mb-3">Author affiliations</h5>
+                        <ol className="space-y-2">
+                          {pub.affiliations.map((affiliation) => <li key={affiliation.id} className="flex gap-3 text-sm leading-relaxed text-slate-400"><span className="text-blue-300">{affiliation.id}.</span><span>{affiliation.name}</span></li>)}
+                        </ol>
+                      </div>
+                    )}
+                  </details>
+                )}
               </div>
             </motion.div>
           ))}
@@ -75,12 +112,12 @@ export default function Publications() {
                   <div className="flex-1">
                     <p className="text-white font-semibold text-sm leading-snug mb-1">{cert.title}</p>
                     <p className="text-blue-400 text-xs font-medium mb-2">{cert.issuer}</p>
-                    <div className="flex items-center gap-2">
+                    {cert.status && <div className="flex items-center gap-2">
                       <span className={`inline-flex items-center gap-1 text-xs px-2 py-0.5 rounded-full border font-medium ${cert.status === "Completed" ? "bg-green-500/10 text-green-400 border-green-500/20" : "bg-amber-500/10 text-amber-400 border-amber-500/20"}`}>
                         {cert.status === "Completed" ? "✓" : "⏳"} {cert.status}
                       </span>
                       <span className="text-slate-500 text-xs font-mono">{cert.date}</span>
-                    </div>
+                    </div>}
                   </div>
                 </div>
               </motion.div>

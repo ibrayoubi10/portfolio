@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { MapPin, GraduationCap, Globe } from "lucide-react";
-import { personalInfo, education } from "@/data/portfolioData";
+import { personalInfo, education, publications } from "@/data/portfolioData";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -21,8 +21,8 @@ export default function About() {
         <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} custom={0} variants={fadeUp} className="text-center mb-16">
           <span className="inline-block text-blue-400 font-mono text-sm tracking-widest mb-3">01. ABOUT ME</span>
           <h2 className="text-4xl md:text-5xl font-bold text-white">
-            Who I{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Am</span>
+            Who{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Am I?</span>
           </h2>
         </motion.div>
 
@@ -87,7 +87,7 @@ export default function About() {
             </div>
 
             <div className="grid grid-cols-3 gap-3 mt-6">
-              {[{ value: "3+", label: "Years Research" }, { value: "4+", label: "Projects" }, { value: "1", label: "IEEE Paper" }].map((stat) => (
+              {[{ value: "3", label: "Internships" }, { value: "4", label: "Projects" }, { value: String(publications.length), label: "Manuscripts" }].map((stat) => (
                 <div key={stat.label} className="text-center p-4 rounded-xl border border-blue-500/15 bg-blue-500/5">
                   <p className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">{stat.value}</p>
                   <p className="text-slate-500 text-xs mt-1">{stat.label}</p>

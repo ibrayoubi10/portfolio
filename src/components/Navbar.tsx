@@ -97,7 +97,7 @@ export default function Navbar() {
             Hire Me
           </motion.a>
 
-          <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden text-slate-300 hover:text-white p-2">
+          <button aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)} className="md:hidden text-slate-300 hover:text-white p-2">
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>

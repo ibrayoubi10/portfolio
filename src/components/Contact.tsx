@@ -16,7 +16,7 @@ const contactLinks = [
   { icon: Mail, label: "Email", value: "ayoubi192003@gmail.com", href: `mailto:${personalInfo.email}`, description: "Send me an email", color: "from-blue-500/20 to-cyan-500/20", border: "border-blue-500/20 hover:border-blue-400/50", iconColor: "text-blue-400" },
   { icon: Github, label: "GitHub", value: `@${personalInfo.githubUsername}`, href: personalInfo.github, description: "Check my repositories", color: "from-slate-500/20 to-slate-600/20", border: "border-slate-500/20 hover:border-slate-400/50", iconColor: "text-slate-300" },
   { icon: Linkedin, label: "LinkedIn", value: `in/${personalInfo.linkedinUsername}`, href: personalInfo.linkedin, description: "Connect professionally", color: "from-blue-600/20 to-blue-700/20", border: "border-blue-600/20 hover:border-blue-500/50", iconColor: "text-blue-400" },
-  { icon: Phone, label: "Phone", value: personalInfo.phone, href: `tel:${personalInfo.phone}`, description: "Call or text me", color: "from-green-500/20 to-emerald-500/20", border: "border-green-500/20 hover:border-green-400/50", iconColor: "text-green-400" },
+  { icon: Phone, label: "Phone", value: personalInfo.phone, href: `tel:${personalInfo.phoneHref}`, description: "Call or text me", color: "from-green-500/20 to-emerald-500/20", border: "border-green-500/20 hover:border-green-400/50", iconColor: "text-green-400" },
 ];
 
 export default function Contact() {
@@ -38,8 +38,8 @@ export default function Contact() {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">Touch</span>
           </h2>
           <p className="text-slate-400 max-w-xl mx-auto text-base leading-relaxed">
-            I am actively looking for a <span className="text-blue-300 font-medium">CIFRE thesis</span> in applied AI for computer vision,
-            and open to research collaborations and engineering opportunities.
+            I am available for <span className="text-blue-300 font-medium">full-time AI engineering roles</span>,
+            with a focus on computer vision, machine learning, and applied AI.
           </p>
         </motion.div>
 
@@ -65,6 +65,7 @@ export default function Contact() {
               <Mail size={17} />
               Send me an Email
             </motion.a>
+            <div className="mt-5"><a href="/ibrahim-al-ayoubi-resume.pdf" download className="text-sm text-blue-300 hover:text-cyan-300 underline underline-offset-4">Download résumé</a></div>
           </div>
         </motion.div>
 
